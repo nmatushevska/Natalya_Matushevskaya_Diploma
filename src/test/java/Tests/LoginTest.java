@@ -13,7 +13,7 @@ public class LoginTest extends BaseTest{
         loginPage = new LoginPage(driver);
 
         loginPage.successfulLogin();
-        Assert.assertNotNull(loginPage.userName());
+        Assert.assertNotNull(loginPage.getUserName());
     }
 
     @Test
@@ -21,6 +21,6 @@ public class LoginTest extends BaseTest{
         loginPage = new LoginPage(driver);
 
         loginPage.failedLogin();
-        Assert.assertTrue(loginPage.logInErrorMessage().isDisplayed());
+        Assert.assertTrue(loginPage.getLogInErrorMessage().isDisplayed());
     }
 }

@@ -16,7 +16,7 @@ public class LoginPage extends BasePage {
 
     @FindBy(xpath = "//a[contains (text(),'Я согласен')]")
     WebElement acceptCookiesButton;
-    @FindBy(xpath = "//div[@class='mh-user__text']")
+    @FindBy(xpath = "//a[@class='m-header__user']")
     WebElement accountButton;
     @FindBy(xpath = "//a[text()=' Войти ']")
     WebElement signInButton;
@@ -35,31 +35,39 @@ public class LoginPage extends BasePage {
         super(driver);
         PageFactory.initElements(driver, this);
     }
-    private void acceptCookies(){
-        acceptCookiesButton.click();
+
+    public WebElement getLogInErrorMessage() {
+        return logInErrorMessage;
     }
-    private void openLoginDialog(){
+
+    private void acceptCookies() {
+        if(acceptCookiesButton.isDisplayed()) {
+            acceptCookiesButton.click();
+        }
+    }
+
+    private void openLoginDialog() {
         acceptCookies();
         actions.moveToElement(accountButton).perform();
         actions.moveToElement(signInButton).click().perform();
         logger.info("Login dialog opened");
     }
-    public void successfulLogin(){
+
+    public void successfulLogin() {
         openLoginDialog();
         emailInputField.sendKeys(email);
         passwordInputField.sendKeys(password);
         logInButton.click();
     }
-    public void failedLogin(){
+
+    public void failedLogin() {
         openLoginDialog();
         emailInputField.sendKeys(email);
         passwordInputField.sendKeys(wrongPassword);
         logInButton.click();
     }
-    public String userName() {
+
+    public String getUserName() {
         return accountName.getAttribute("title");
-    }
-    public WebElement logInErrorMessage() {
-        return logInErrorMessage;
     }
 }

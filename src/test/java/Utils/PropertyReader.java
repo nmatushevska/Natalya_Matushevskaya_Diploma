@@ -11,7 +11,6 @@ public class PropertyReader {
 
         try (InputStream input = new FileInputStream("src/test/resources/creds.properties")) {
             properties.load(input);
-            System.setProperties(properties);
         } catch (IOException e) {
             e.printStackTrace();
         }

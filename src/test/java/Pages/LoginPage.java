@@ -1,15 +1,19 @@
 package Pages;
 
+import Utils.PropertyReader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.Properties;
+
 
 public class LoginPage extends BasePage {
-    private final String email = System.getProperty("email");
-    private final String password = System.getProperty("password");
-    private final String wrongPassword = System.getProperty("wrongPassword");
+    private final Properties properties = PropertyReader.readFile();
+    private final String email = properties.getProperty("email");
+    private final String password = properties.getProperty("password");
+    private final String wrongPassword = properties.getProperty("wrongPassword");
 
     @FindBy(xpath = "//a[contains (text(),'Я согласен')]")
     WebElement acceptCookiesButton;

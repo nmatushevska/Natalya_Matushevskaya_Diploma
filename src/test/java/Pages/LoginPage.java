@@ -1,6 +1,7 @@
 package Pages;
 
 import Utils.PropertyReader;
+import io.qameta.allure.Step;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
@@ -61,6 +62,7 @@ public class LoginPage extends BasePage {
         log.info("Login dialog opened");
     }
 
+    @Step("Performing successful login")
     public void successfulLogin() {
         openLoginDialog();
         emailInputField.sendKeys(email);
@@ -71,6 +73,7 @@ public class LoginPage extends BasePage {
         log.info("user logged in");
     }
 
+    @Step("Attempting to log in with wrong password")
     public void failedLogin() {
         openLoginDialog();
         emailInputField.sendKeys(email);

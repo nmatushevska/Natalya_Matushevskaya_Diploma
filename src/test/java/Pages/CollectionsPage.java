@@ -1,5 +1,6 @@
 package Pages;
 
+import io.qameta.allure.Step;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
@@ -39,6 +40,7 @@ public class CollectionsPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
+    @Step("Opening Collections tab in user account")
     public void openCollections() {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         actions.moveToElement(accountDropDownMenu).perform();
@@ -47,6 +49,7 @@ public class CollectionsPage extends BasePage {
         log.info("Collections tab is opened");
     }
 
+    @Step("Clicking on re-direct button to open Courses page")
     public void goToCoursesPage() {
         if (redirectToCoursesButton.isDisplayed()) {
             redirectToCoursesButton.click();
@@ -54,16 +57,19 @@ public class CollectionsPage extends BasePage {
         }
     }
 
+    @Step("Opening random Course page")
     public void openRandomCourse() {
         randomCourseButton.click();
         log.info("Open random course page");
     }
 
+    @Step("Adding random course to user's collections")
     public void addCourseToCollections() {
         addCourseToCollectionButton.click();
         log.info("Adding opened course to user's collection");
     }
 
+    @Step("Deleting course from user's collections")
     public void deleteCourseFromCollections() {
         deleteCourseFromCollectionsButton.click();
         confirmDeleteCourse.click();

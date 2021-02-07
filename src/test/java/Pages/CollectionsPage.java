@@ -40,7 +40,7 @@ public class CollectionsPage extends BasePage {
     }
 
     public void openCollections() {
-        WebDriverWait wait = new WebDriverWait(driver, 3);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
         actions.moveToElement(accountDropDownMenu).perform();
         wait.until(ExpectedConditions.visibilityOf(collectionsButton));
         actions.moveToElement(collectionsButton).click().perform();

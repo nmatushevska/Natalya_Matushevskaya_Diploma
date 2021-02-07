@@ -9,7 +9,7 @@ public class CollectionsTest extends BaseTest {
     LoginPage loginPage;
     CollectionsPage collectionsPage;
 
-    @Test
+    @Test(groups = "two", description = "Verifying that hyperlink to the Courses page is present in empty collections")
     public void redirectToCoursesPresentInEmptyCollectionTest() {
         loginPage = new LoginPage(driver);
         collectionsPage = new CollectionsPage(driver);
@@ -19,7 +19,7 @@ public class CollectionsTest extends BaseTest {
         Assert.assertTrue(collectionsPage.getRedirectToCoursesButton().isDisplayed());
     }
 
-    @Test
+    @Test(groups = "two", description = "Verifying possibility to add course to collections and delete it")
     public void addAndDeleteCourseTest() {
         loginPage = new LoginPage(driver);
         collectionsPage = new CollectionsPage(driver);

@@ -1,0 +1,32 @@
+Configuration:
+  status: INFO
+  Appenders:
+    Console:
+      name: console_appender
+      target: SYSTEM_OUT
+      PatternLayout:
+        Pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} %level [%t] [%c] - %msg%n"
+    File:
+      name: file_appender
+      fileName: "target/tests.log"
+      PatternLayout:
+        Pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} %level [%t] [%c] - %msg%n"
+  Loggers:
+    Root:
+      level: INFO
+      AppenderRef:
+        - ref: console_appender
+          level: INFO
+        - ref: file_appender
+          level: INFO
+    logger:
+      - name: consoleLogger
+        level: INFO
+        additivity: true
+        AppenderRef:
+          ref: console_appender
+      - name: fileLogger
+        level: INFO
+        additivity: false
+        AppenderRef:
+          ref: file_appender

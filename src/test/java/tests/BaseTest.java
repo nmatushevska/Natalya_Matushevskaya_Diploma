@@ -1,5 +1,6 @@
 package tests;
 
+import org.testng.ITestContext;
 import utils.DriverManager;
 import utils.PropertyReader;
 import utils.TestListener;
@@ -19,9 +20,10 @@ public class BaseTest {
     private final String url = properties.getProperty("pageURL");
 
     @BeforeMethod(groups = {"one","two","three"})
-    public void setup() {
+    public void setup(ITestContext context) {
         driver = DriverManager.getDriver(DriverManager.Browser.Chrome);
         driver.get(url);
+        context.setAttribute("webDriver", driver);
         log.info("Page "+url+" was opened");
     }
 

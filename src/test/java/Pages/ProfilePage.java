@@ -1,5 +1,6 @@
 package Pages;
 
+import io.qameta.allure.Step;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.Keys;
@@ -86,6 +87,7 @@ public class ProfilePage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
+    @Step("Opening user's profile page")
     public void openProfile() {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         actions.moveToElement(accountDropDownMenu).perform();
@@ -94,59 +96,70 @@ public class ProfilePage extends BasePage {
         log.info("User's profile page is opened");
     }
 
+    @Step("Opening editing mode of user's profile")
     public void openProfileEditMode() {
         editProfileButton.click();
         log.info("Profile editing mode is opened");
     }
 
+    @Step("Clicking to apply changes")
     public void applyChanges() {
         saveChangesButton.click();
         log.info("Changes are saved");
     }
 
+    @Step("Clicking to cancel changes")
     public void cancelChanges() {
         cancelChangesButton.click();
         log.info("Changes are cancelled");
     }
 
+    @Step("Adding info to the About field")
     public void addAboutInfo() {
         aboutInputField.sendKeys(aboutText);
         log.info("Text " + aboutText + " is added to About field");
     }
 
+    @Step("Clearing the about field")
     public void clearAboutInfo() {
         aboutInputField.sendKeys(Keys.CONTROL + "a");
         aboutInputField.sendKeys(Keys.DELETE);
         log.info("About field is cleared");
     }
 
+    @Step("Changing gender to female")
     public void changeToFemaleGender() {
         femaleGenderRadioButton.click();
         log.info("Female gender is selected");
     }
 
+    @Step("Changing gender to male")
     public void changeToMaleGender() {
         maleGenderRadioButton.click();
         log.info("Male gender is selected");
     }
 
+    @Step("Changing gender to none selected option")
     public void resetGender() {
         noneGenderRadioButton.click();
         log.info("No gender info option is selected");
     }
 
+    @Step("Changing education to Higher")
     public void setHigherEducation() {
         Select select = new Select(educationDropdownMenu);
         select.selectByVisibleText(" Высшее образование ");
         log.info("Higher education option is selected");
     }
 
+    @Step("Changing education to Master")
     public void setMasterEducation() {
         Select select = new Select(educationDropdownMenu);
         select.selectByVisibleText(" Магистратура ");
         log.info("Master education is selected");
     }
 
+    @Step("Setting education to no selected option")
     public void resetEducation() {
         Select select = new Select(educationDropdownMenu);
         select.selectByVisibleText(" Не выбрано ");

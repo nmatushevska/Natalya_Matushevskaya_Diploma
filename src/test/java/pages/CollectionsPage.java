@@ -7,15 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 @Log4j2
 @Getter
 public class CollectionsPage extends BasePage {
-
-    @FindBy(xpath = "//a[@class='m-header__user']")
-    WebElement accountDropDownMenu;
 
     @FindBy(xpath = "//a[text()=' Коллекции ']")
     WebElement collectionsButton;
@@ -42,17 +37,14 @@ public class CollectionsPage extends BasePage {
 
     @Step("Opening Collections tab in user account")
     public void openCollections() {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        actions.moveToElement(accountDropDownMenu).perform();
-        wait.until(ExpectedConditions.visibilityOf(collectionsButton));
-        actions.moveToElement(collectionsButton).click().perform();
+        openAccountTab(collectionsButton);
         log.info("Collections tab is opened");
     }
 
     @Step("Clicking on re-direct button to open Courses page")
     public void goToCoursesPage() {
-            redirectToCoursesButton.click();
-            log.info("Tap on redirect link to the Courses page");
+        redirectToCoursesButton.click();
+        log.info("Tap on redirect link to the Courses page");
     }
 
     @Step("Opening random Course page")

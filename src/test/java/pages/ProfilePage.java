@@ -8,15 +8,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 @Log4j2
 public class ProfilePage extends BasePage {
-    @FindBy(xpath = "//a[@class='m-header__user']")
-    WebElement accountDropDownMenu;
 
     @FindBy(xpath = "//a[text()=' Профиль ']")
     WebElement profileButton;
@@ -89,10 +85,7 @@ public class ProfilePage extends BasePage {
 
     @Step("Opening user's profile page")
     public void openProfile() {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        actions.moveToElement(accountDropDownMenu).perform();
-        wait.until(ExpectedConditions.visibilityOf(profileButton));
-        actions.moveToElement(profileButton).click().perform();
+        openAccountTab(profileButton);
         log.info("User's profile page is opened");
     }
 

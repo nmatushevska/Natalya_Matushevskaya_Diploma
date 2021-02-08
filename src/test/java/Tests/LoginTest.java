@@ -8,7 +8,7 @@ public class LoginTest extends BaseTest{
 
     LoginPage loginPage;
 
-    @Test
+    @Test(groups = "one", description = "Successful logging in to the app")
     public void successfulLoginTest(){
         loginPage = new LoginPage(driver);
 
@@ -16,7 +16,7 @@ public class LoginTest extends BaseTest{
         Assert.assertNotNull(loginPage.getUserName());
     }
 
-    @Test
+    @Test(groups = "one", description ="Failed logging in to the app due to invalid password")
     public void failedLogin(){
         loginPage = new LoginPage(driver);
 

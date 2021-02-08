@@ -1,0 +1,34 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="TestSuit" verbose="1" parallel="tests" thread-count="3">
+    <test name="LoginTests">
+        <groups>
+            <run>
+                <include name="one"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="Tests.LoginTest"/>
+        </classes>
+    </test>
+    <test name="CollectionsTests">
+        <groups>
+            <run>
+                <include name="two"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="Tests.CollectionsTest"/>
+        </classes>
+    </test>
+    <test name="ProfileTests">
+        <groups>
+            <run>
+                <include name="three"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="Tests.ProfileTest"/>
+        </classes>
+    </test>
+</suite>

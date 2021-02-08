@@ -87,7 +87,7 @@ public class ProfilePage extends BasePage {
     }
 
     public void openProfile() {
-        WebDriverWait wait = new WebDriverWait(driver, 3);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
         actions.moveToElement(accountDropDownMenu).perform();
         wait.until(ExpectedConditions.visibilityOf(profileButton));
         actions.moveToElement(profileButton).click().perform();

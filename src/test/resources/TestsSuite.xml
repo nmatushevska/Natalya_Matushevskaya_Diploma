@@ -8,7 +8,7 @@
             </run>
         </groups>
         <classes>
-            <class name="Tests.LoginTest"/>
+            <class name="tests.LoginTest"/>
         </classes>
     </test>
     <test name="CollectionsTests">
@@ -18,7 +18,7 @@
             </run>
         </groups>
         <classes>
-            <class name="Tests.CollectionsTest"/>
+            <class name="tests.CollectionsTest"/>
         </classes>
     </test>
     <test name="ProfileTests">
@@ -28,7 +28,7 @@
             </run>
         </groups>
         <classes>
-            <class name="Tests.ProfileTest"/>
+            <class name="tests.ProfileTest"/>
         </classes>
     </test>
 </suite>

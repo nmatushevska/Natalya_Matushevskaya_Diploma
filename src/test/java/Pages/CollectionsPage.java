@@ -51,10 +51,8 @@ public class CollectionsPage extends BasePage {
 
     @Step("Clicking on re-direct button to open Courses page")
     public void goToCoursesPage() {
-        if (redirectToCoursesButton.isDisplayed()) {
             redirectToCoursesButton.click();
             log.info("Tap on redirect link to the Courses page");
-        }
     }
 
     @Step("Opening random Course page")

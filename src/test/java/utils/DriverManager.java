@@ -1,4 +1,4 @@
-package Utils;
+package utils;
 
 import io.github.bonigarcia.wdm.config.DriverManagerType;
 import io.github.bonigarcia.wdm.managers.ChromeDriverManager;

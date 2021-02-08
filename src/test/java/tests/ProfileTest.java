@@ -1,7 +1,7 @@
-package Tests;
+package tests;
 
-import Pages.LoginPage;
-import Pages.ProfilePage;
+import pages.LoginPage;
+import pages.ProfilePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -17,12 +17,12 @@ public class ProfileTest extends BaseTest {
         loginPage.successfulLogin();
         profilePage.openProfile();
         profilePage.openProfileEditMode();
-        profilePage.addAboutInfo();
+        profilePage.addDefaultAboutInfo();
         profilePage.cancelChanges();
         Assert.assertTrue(profilePage.getDefaultAboutMessage().isDisplayed());
 
         profilePage.openProfileEditMode();
-        profilePage.addAboutInfo();
+        profilePage.addDefaultAboutInfo();
         profilePage.applyChanges();
         Assert.assertTrue(profilePage.getChangedAboutMessage().isDisplayed());
 

@@ -1,6 +1,6 @@
-package Pages;
+package pages;
 
-import Utils.PropertyReader;
+import utils.PropertyReader;
 import io.qameta.allure.Step;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;

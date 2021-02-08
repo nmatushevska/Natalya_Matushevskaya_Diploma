@@ -1,8 +1,8 @@
-package Tests;
+package tests;
 
-import Utils.DriverManager;
-import Utils.PropertyReader;
-import Utils.TestListener;
+import utils.DriverManager;
+import utils.PropertyReader;
+import utils.TestListener;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;

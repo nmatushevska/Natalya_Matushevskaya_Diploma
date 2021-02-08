@@ -1,7 +1,7 @@
-package Tests;
+package tests;
 
-import Pages.CollectionsPage;
-import Pages.LoginPage;
+import pages.CollectionsPage;
+import pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

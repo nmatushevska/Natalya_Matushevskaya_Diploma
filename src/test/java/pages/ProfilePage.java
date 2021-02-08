@@ -1,4 +1,4 @@
-package Pages;
+package pages;
 
 import io.qameta.allure.Step;
 import lombok.Getter;
@@ -115,7 +115,7 @@ public class ProfilePage extends BasePage {
     }
 
     @Step("Adding info to the About field")
-    public void addAboutInfo() {
+    public void addDefaultAboutInfo() {
         aboutInputField.sendKeys(aboutText);
         log.info("Text " + aboutText + " is added to About field");
     }

@@ -63,7 +63,7 @@ public class CollectionsPage extends BasePage {
         WebDriverWait waitForPageIsLoaded = new WebDriverWait(driver, 10);
         waitForPageIsLoaded.until(
                 webDriver -> Objects.equals(((JavascriptExecutor) webDriver).
-                                executeScript("return document.readyState"),"complete"));
+                        executeScript("return document.readyState"), "complete"));
         addCourseToCollectionButton.click();
         log.info("Adding opened course to user's collection");
     }

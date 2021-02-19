@@ -42,7 +42,6 @@ public class LoginPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-
     private String passwordValue() {
         if (System.getenv("password") == null) {
             return PropertyReader.getProperty("password");
@@ -75,8 +74,7 @@ public class LoginPage extends BasePage {
         }
     }
 
-
-    private void openUrl(){
+    private void openUrl() {
         driver.get(pageUrlValue());
         log.info("Page " + pageUrlValue() + " was opened");
     }
@@ -95,7 +93,6 @@ public class LoginPage extends BasePage {
         actions.moveToElement(signInButton).click().perform();
         log.info("Login dialog opened");
     }
-
 
     @Step("Performing successful login")
     public void successfulLogin() {

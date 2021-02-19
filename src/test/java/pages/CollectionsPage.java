@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.concurrent.TimeUnit;
+
 @Log4j2
 @Getter
 public class CollectionsPage extends BasePage {
@@ -55,12 +57,14 @@ public class CollectionsPage extends BasePage {
 
     @Step("Adding random course to user's collections")
     public void addCourseToCollections() {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         addCourseToCollectionButton.click();
         log.info("Adding opened course to user's collection");
     }
 
     @Step("Deleting course from user's collections")
     public void deleteCourseFromCollections() {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         deleteCourseFromCollectionsButton.click();
         confirmDeleteCourse.click();
         log.info("Deleting course from collection");

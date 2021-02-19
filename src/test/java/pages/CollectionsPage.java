@@ -3,11 +3,14 @@ package pages;
 import io.qameta.allure.Step;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 @Log4j2
@@ -57,7 +60,10 @@ public class CollectionsPage extends BasePage {
 
     @Step("Adding random course to user's collections")
     public void addCourseToCollections() {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        WebDriverWait waitForPageIsLoaded = new WebDriverWait(driver, 10);
+        waitForPageIsLoaded.until(
+                webDriver -> Objects.equals(((JavascriptExecutor) webDriver).
+                                executeScript("return document.readyState"),"complete"));
         addCourseToCollectionButton.click();
         log.info("Adding opened course to user's collection");
     }

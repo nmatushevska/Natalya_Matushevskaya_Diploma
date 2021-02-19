@@ -19,20 +19,20 @@ public class CollectionsTest extends BaseTest {
         Assert.assertTrue(collectionsPage.getRedirectToCoursesButton().isDisplayed());
     }
 
-//    @Test(groups = "two", description = "Verifying possibility to add course to collections and delete it")
-//    public void addAndDeleteCourseTest() {
-//        loginPage = new LoginPage(driver);
-//        collectionsPage = new CollectionsPage(driver);
-//
-//        loginPage.successfulLogin();
-//        collectionsPage.openCollections();
-//        collectionsPage.goToCoursesPage();
-//        collectionsPage.openRandomCourse();
-//        collectionsPage.addCourseToCollections();
-//        collectionsPage.openCollections();
-//        Assert.assertTrue(collectionsPage.getDeleteCourseFromCollectionsButton().isDisplayed());
-//
-//        collectionsPage.deleteCourseFromCollections();
-//        Assert.assertTrue(collectionsPage.getRedirectToCoursesButton().isDisplayed());
-//    }
+    @Test(groups = "two", description = "Verifying possibility to add course to collections and delete it")
+    public void addAndDeleteCourseTest() {
+        loginPage = new LoginPage(driver);
+        collectionsPage = new CollectionsPage(driver);
+
+        loginPage.successfulLogin();
+        collectionsPage.openCollections();
+        collectionsPage.goToCoursesPage();
+        collectionsPage.openRandomCourse();
+        collectionsPage.addCourseToCollections();
+        collectionsPage.openCollections();
+        Assert.assertTrue(collectionsPage.getDeleteCourseFromCollectionsButton().isDisplayed());
+
+        collectionsPage.deleteCourseFromCollections();
+        Assert.assertTrue(collectionsPage.getRedirectToCoursesButton().isDisplayed());
+    }
 }

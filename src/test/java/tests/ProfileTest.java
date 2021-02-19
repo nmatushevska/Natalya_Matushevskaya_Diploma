@@ -1,9 +1,9 @@
 package tests;
 
-import pages.LoginPage;
-import pages.ProfilePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.LoginPage;
+import pages.ProfilePage;
 
 public class ProfileTest extends BaseTest {
     LoginPage loginPage;

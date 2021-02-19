@@ -1,9 +1,9 @@
 package tests;
 
-import pages.CollectionsPage;
-import pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.CollectionsPage;
+import pages.LoginPage;
 
 public class CollectionsTest extends BaseTest {
     LoginPage loginPage;

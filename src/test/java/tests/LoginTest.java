@@ -1,23 +1,23 @@
 package tests;
 
-import pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.LoginPage;
 
-public class LoginTest extends BaseTest{
+public class LoginTest extends BaseTest {
 
     LoginPage loginPage;
 
     @Test(groups = "one", description = "Successful logging in to the app")
-    public void successfulLoginTest(){
+    public void successfulLoginTest() {
         loginPage = new LoginPage(driver);
 
         loginPage.successfulLogin();
         Assert.assertNotNull(loginPage.getUserName());
     }
 
-    @Test(groups = "one", description ="Failed logging in to the app due to invalid password")
-    public void failedLogin(){
+    @Test(groups = "one", description = "Failed logging in to the app due to invalid password")
+    public void failedLogin() {
         loginPage = new LoginPage(driver);
 
         loginPage.failedLogin();

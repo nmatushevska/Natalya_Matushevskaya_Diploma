@@ -1,6 +1,5 @@
 package pages;
 
-import utils.PropertyReader;
 import io.qameta.allure.Step;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
@@ -8,15 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import java.util.Properties;
+import utils.PropertyReader;
 
 @Log4j2
 public class LoginPage extends BasePage {
-    private final Properties properties = PropertyReader.readFile();
-    private final String email = properties.getProperty("email");
-    private final String password = properties.getProperty("password");
-    private final String wrongPassword = properties.getProperty("wrongPassword");
 
     @FindBy(xpath = "//a[contains (text(),'Я согласен')]")
     WebElement acceptCookiesButton;
@@ -48,6 +42,45 @@ public class LoginPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
+
+    private String passwordValue() {
+        if (System.getenv("password") == null) {
+            return PropertyReader.getProperty("password");
+        } else {
+            return System.getenv("password");
+        }
+    }
+
+    private String emailValue() {
+        if (System.getenv("email") == null) {
+            return PropertyReader.getProperty("email");
+        } else {
+            return System.getenv("email");
+        }
+    }
+
+    private String wrongPasswordValue() {
+        if (System.getenv("wrongPassword") == null) {
+            return PropertyReader.getProperty("wrongPassword");
+        } else {
+            return System.getenv("wrongPassword");
+        }
+    }
+
+    private String pageUrlValue() {
+        if (System.getenv("pageURL") == null) {
+            return PropertyReader.getProperty("pageURL");
+        } else {
+            return System.getenv("pageURL");
+        }
+    }
+
+
+    private void openUrl(){
+        driver.get(pageUrlValue());
+        log.info("Page " + pageUrlValue() + " was opened");
+    }
+
     private void acceptCookies() {
         if (accountButton.isDisplayed()) {
             acceptCookiesButton.click();
@@ -56,18 +89,20 @@ public class LoginPage extends BasePage {
     }
 
     private void openLoginDialog() {
+        openUrl();
         acceptCookies();
         actions.moveToElement(accountButton).perform();
         actions.moveToElement(signInButton).click().perform();
         log.info("Login dialog opened");
     }
 
+
     @Step("Performing successful login")
     public void successfulLogin() {
         openLoginDialog();
-        emailInputField.sendKeys(email);
+        emailInputField.sendKeys(emailValue());
         log.info("Email entered");
-        passwordInputField.sendKeys(password);
+        passwordInputField.sendKeys(passwordValue());
         log.info("Password entered");
         logInButton.click();
         log.info("user logged in");
@@ -76,9 +111,9 @@ public class LoginPage extends BasePage {
     @Step("Attempting to log in with wrong password")
     public void failedLogin() {
         openLoginDialog();
-        emailInputField.sendKeys(email);
+        emailInputField.sendKeys(emailValue());
         log.info("Email entered");
-        passwordInputField.sendKeys(wrongPassword);
+        passwordInputField.sendKeys(wrongPasswordValue());
         log.info("Wrong password entered");
         logInButton.click();
         log.info("Login attempt with wrong password");

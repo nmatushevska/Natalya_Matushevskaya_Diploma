@@ -2,19 +2,26 @@ package utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertyReader {
-    public static Properties readFile() {
-        Properties properties = new Properties();
+    protected static FileInputStream input;
+    protected static Properties properties = new Properties();
 
-        try (InputStream input = new FileInputStream("src/test/resources/creds.properties")) {
+    public static String getProperty(String key) {
+        try {
+            input = new FileInputStream("src/test/resources/creds.properties");
             properties.load(input);
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (input != null)
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
         }
-
-        return properties;
+        return properties.getProperty(key);
     }
 }

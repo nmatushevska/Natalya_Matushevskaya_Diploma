@@ -32,6 +32,7 @@ public class CollectionsTest extends BaseTest {
         collectionsPage.openCollections();
         Assert.assertTrue(collectionsPage.getDeleteCourseFromCollectionsButton().isDisplayed());
 
+
         collectionsPage.deleteCourseFromCollections();
         Assert.assertTrue(collectionsPage.getRedirectToCoursesButton().isDisplayed());
     }

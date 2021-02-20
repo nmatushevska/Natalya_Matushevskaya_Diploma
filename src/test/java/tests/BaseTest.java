@@ -15,13 +15,13 @@ import utils.TestListener;
 public class BaseTest {
     WebDriver driver;
 
-    @BeforeMethod(groups = {"one", "two", "three"})
+    @BeforeMethod(groups = {"one", "two"})
     public void setup(ITestContext context) {
         driver = DriverManager.getDriver(DriverManager.Browser.Chrome);
         context.setAttribute("webDriver", driver);
     }
 
-    @AfterMethod(alwaysRun = true, groups = {"one", "two", "three"})
+    @AfterMethod(alwaysRun = true, groups = {"one", "two"})
     public void close() {
         if (driver != null) {
             driver.quit();

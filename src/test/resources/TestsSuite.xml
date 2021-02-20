@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="TestSuit" verbose="1">
-    <test name="LoginTests">
+<suite name="TestSuit" verbose="1" parallel="tests" thread-count="2">
+    <test name="groupOne">
         <groups>
             <run>
                 <include name="one"/>
@@ -9,25 +9,19 @@
         </groups>
         <classes>
             <class name="tests.LoginTest"/>
+            <class name="tests.CollectionsTest"/>
+            <class name="tests.ProfileTest"/>
         </classes>
     </test>
-    <test name="CollectionsTests">
+    <test name="groupTwo">
         <groups>
             <run>
                 <include name="two"/>
             </run>
         </groups>
         <classes>
+            <class name="tests.LoginTest"/>
             <class name="tests.CollectionsTest"/>
-        </classes>
-    </test>
-    <test name="ProfileTests">
-        <groups>
-            <run>
-                <include name="three"/>
-            </run>
-        </groups>
-        <classes>
             <class name="tests.ProfileTest"/>
         </classes>
     </test>

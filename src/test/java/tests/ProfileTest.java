@@ -9,7 +9,7 @@ public class ProfileTest extends BaseTest {
     LoginPage loginPage;
     ProfilePage profilePage;
 
-    @Test(groups = "three", description = "Verifying adding and deleting About user's info")
+    @Test(groups = "one", description = "Verifying adding and deleting About user's info", priority = 3)
     public void addAndDeleteAboutInfoTest() {
         loginPage = new LoginPage(driver);
         profilePage = new ProfilePage(driver);
@@ -32,7 +32,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertTrue(profilePage.getDefaultAboutMessage().isDisplayed());
     }
 
-    @Test(groups = "three", description = "Verifying possibility to change gender in user's info")
+    @Test(groups = "two", description = "Verifying possibility to change gender in user's info", priority = 3)
     public void changeGenderTest() {
         loginPage = new LoginPage(driver);
         profilePage = new ProfilePage(driver);
@@ -57,7 +57,7 @@ public class ProfileTest extends BaseTest {
         Assert.assertTrue(profilePage.getNoneGenderInfo().isDisplayed());
     }
 
-    @Test(groups = "three", description = "Verifying possibility to set education in user's info")
+    @Test(groups = "two", description = "Verifying possibility to set education in user's info", priority = 3)
     public void changeEducationTest() {
         loginPage = new LoginPage(driver);
         profilePage = new ProfilePage(driver);

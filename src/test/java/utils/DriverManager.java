@@ -3,16 +3,15 @@ package utils;
 import io.github.bonigarcia.wdm.config.DriverManagerType;
 import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
 import io.github.bonigarcia.wdm.managers.FirefoxDriverManager;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 
+@Log4j2
 public class DriverManager {
     private static WebDriver driver = null;
 
@@ -28,7 +27,7 @@ public class DriverManager {
     }
 
     public static WebDriver getDriver(Browser browser) {
-        Logger LOGGER = LoggerFactory.getLogger(DriverManager.class);
+
         switch (browser) {
             case FireFox:
                 FirefoxDriverManager.getInstance(DriverManagerType.FIREFOX).setup();
@@ -38,18 +37,14 @@ public class DriverManager {
                 break;
             case Chrome:
                 ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
-                DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments("test-type");
-                desiredCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
-                driver = new ChromeDriver(options);
+                driver = new ChromeDriver();
                 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                 driver.manage().window().maximize();
                 break;
             default:
-                LOGGER.info("Browser was not selected.");
+                log.info("Browser was not selected.");
         }
-        LOGGER.info("Selected Browser: " + browser.value);
+        log.info("Selected Browser: " + browser.value);
         return driver;
     }
 }

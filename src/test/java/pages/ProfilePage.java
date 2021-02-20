@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 @Log4j2
 public class ProfilePage extends BasePage {
 
-    @FindBy(xpath = "//a[text()=' Профиль ']")
+    @FindBy(xpath = "//a[text()[normalize-space()='Профиль']]")
     WebElement profileButton;
 
     @FindBy(xpath = "//button[text()='Редактировать']")
@@ -38,15 +38,15 @@ public class ProfilePage extends BasePage {
     WebElement changedAboutMessage;
 
     @Getter
-    @FindBy(xpath = "//label[text()=' Мужчина ']")
+    @FindBy(xpath = "//label[text()[normalize-space()='Мужчина']]")
     WebElement maleGenderRadioButton;
 
     @Getter
-    @FindBy(xpath = "//label[text()=' Не выбран ']")
+    @FindBy(xpath = "//label[text()[normalize-space()='Не выбран']]")
     WebElement noneGenderRadioButton;
 
     @Getter
-    @FindBy(xpath = "//label[text()=' Женщина ']")
+    @FindBy(xpath = "//label[text()[normalize-space()='Женщина']]")
     WebElement femaleGenderRadioButton;
 
     @Getter

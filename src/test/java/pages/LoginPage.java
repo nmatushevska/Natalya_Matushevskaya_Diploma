@@ -18,7 +18,7 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//a[@class='m-header__user']")
     WebElement accountButton;
 
-    @FindBy(xpath = "//a[text()=' Войти ']")
+    @FindBy(xpath = "//a[text()[normalize-space()='Войти']]")
     WebElement signInButton;
 
     @FindBy(id = "email")

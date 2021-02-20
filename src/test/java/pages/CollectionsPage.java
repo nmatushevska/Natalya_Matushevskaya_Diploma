@@ -17,22 +17,22 @@ import java.util.concurrent.TimeUnit;
 @Getter
 public class CollectionsPage extends BasePage {
 
-    @FindBy(xpath = "//a[text()=' Коллекции ']")
+    @FindBy(xpath = "//a[text()[normalize-space()='Коллекции']]")
     WebElement collectionsButton;
 
-    @FindBy(xpath = "//a[text()=' Выбрать, с чего начать ']")
+    @FindBy(xpath = "//a[text()[normalize-space()='Выбрать, с чего начать']]")
     WebElement redirectToCoursesButton;
 
     @FindBy(xpath = "//a[@class='course-card__title']")
     WebElement randomCourseButton;
 
-    @FindBy(xpath = "//a[text()=' Сохранить курс ']")
+    @FindBy(xpath = "//a[text()[normalize-space()='Сохранить курс']]")
     WebElement addCourseToCollectionButton;
 
-    @FindBy(xpath = "//a[text()=' Отписаться от Курса ']")
+    @FindBy(xpath = "//a[text()[normalize-space()='Отписаться от Курса']]")
     WebElement deleteCourseFromCollectionsButton;
 
-    @FindBy(xpath = "//a[text()=' Да, хочу отписаться ']")
+    @FindBy(xpath = "//a[text()[normalize-space()='Да, хочу отписаться']]")
     WebElement confirmDeleteCourse;
 
     public CollectionsPage(WebDriver driver) {

@@ -1,19 +1,16 @@
 package utils;
 
-import io.github.bonigarcia.wdm.config.DriverManagerType;
-import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
-import io.github.bonigarcia.wdm.managers.FirefoxDriverManager;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
 
 @Log4j2
 public class DriverManager {
-    private static WebDriver driver = null;
+    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     public enum Browser {
         FireFox("firefox"),
@@ -30,21 +27,21 @@ public class DriverManager {
 
         switch (browser) {
             case FireFox:
-                FirefoxDriverManager.getInstance(DriverManagerType.FIREFOX).setup();
-                driver = new FirefoxDriver();
-                driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-                driver.manage().window().maximize();
+                WebDriverManager.firefoxdriver().setup();
+                driver.set(new FirefoxDriver());
+                driver.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                driver.get().manage().window().maximize();
                 break;
             case Chrome:
-                ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
-                driver = new ChromeDriver();
-                driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-                driver.manage().window().maximize();
+                WebDriverManager.chromedriver().setup();
+                driver.set(new ChromeDriver());
+                driver.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                driver.get().manage().window().maximize();
                 break;
             default:
                 log.info("Browser was not selected.");
         }
         log.info("Selected Browser: " + browser.value);
-        return driver;
+        return driver.get();
     }
 }
